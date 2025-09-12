@@ -1,0 +1,270 @@
+---
+title: "Mixed Effects Modeling with R and SLC"
+author: "Michael Mayer"
+date: "2025-08-29"
+format:
+  html:
+    code-fold: false
+    toc: true
+execute:
+  engine: knitr
+resource_files:
+- requirements.txt
+- renv.lock
+---
+
+# Introduction
+
+This document serves as an example on how to efficiently mix and match R and SAS code using SLC. The general idea here is do demonstrate that a data scientist can pick & choose the tool of choice for each task and transparently exchange data between the languages.
+
+Specifically we will 
+
+* create a synthetic dataset in R
+* run the analysis in SLC
+* visualise the results in R 
+
+# Data generation 
+
+```{r}
+library(tidyverse)
+
+# Set random seed for reproducibility
+set.seed(12345)
+
+# Generate manageable synthetic dataset for mixed effects modeling
+large_study_data_r <- expand_grid(
+  study_id = 1:5,
+  site_id = 1:2,
+  subject_id = 1:20,
+  visit = 1:4
+) |>
+  mutate(
+    # Create unique subject identifier across all studies/sites
+    unique_subject_id = (study_id * 100) + (site_id * 20) + subject_id,
+    
+    # Generate subject-level random effects (same for each subject across visits)
+    subject_intercept = rep(rnorm(n_distinct(unique_subject_id), mean = 0, sd = 2), 
+                           each = 4)[row_number()],
+    
+    # Time-varying covariates
+    age = runif(n(), min = 18, max = 75),
+    gender = rbinom(n(), size = 1, prob = 0.52), # 52% female
+    treatment = rbinom(n(), size = 1, prob = 0.5), # 50% treatment
+    baseline_score = rnorm(n(), mean = 50, sd = 10),
+    
+    # Study and site effects
+    study_effect = rnorm(n(), mean = 0, sd = 1.5),
+    site_effect = rnorm(n(), mean = 0, sd = 1.0),
+    
+    # Generate outcome with complex mixed effects structure
+    time_trend = visit * 2.5,
+    treatment_effect = treatment * 8.3,
+    age_effect = (age - 45) * 0.2,
+    gender_effect = gender * 3.1,
+    
+    # Random error
+    error = rnorm(n(), mean = 0, sd = 3.2),
+    
+    # Final outcome
+    outcome = 45 + 
+      time_trend + 
+      treatment_effect + 
+      age_effect + 
+      gender_effect + 
+      study_effect + 
+      site_effect + 
+      subject_intercept + 
+      error
+  ) |>
+  # Add some missing data patterns
+  mutate(
+    outcome = if_else(runif(n()) < 0.05, NA_real_, outcome),
+    age = if_else(runif(n()) < 0.02, NA_real_, age)
+  ) |>
+  # Create categorical versions
+  mutate(
+    age_group = case_when(
+      is.na(age) ~ "Unknown",
+      age < 30 ~ "Young",
+      age < 50 ~ "Middle",
+      age >= 50 ~ "Older"
+    ),
+    treatment_group = if_else(treatment == 1, "Active", "Placebo"),
+    gender_label = if_else(gender == 1, "Female", "Male")
+  )
+
+# Check the dataset size (equivalent to PROC SQL)
+large_study_data_r |>
+  summarise(
+    total_observations = n(),
+    num_studies = n_distinct(study_id),
+    num_sites = n_distinct(site_id),
+    num_subjects = n_distinct(unique_subject_id)
+  )
+
+# Preview the data
+head(large_study_data_r)
+```
+
+# Run analysis in SLC
+
+## Initialise connection to SLC via reticulate/SLC
+
+```{r}
+library(reticulate)
+
+# Set up Python path to include SLC
+py_run_string("import sys; sys.path.insert(0, '/opt/altair/slc/2025/python')")
+
+slc <- import("slc.slc")
+slc_lib <- import("slc.library")
+print('✅ SLC classes imported successfully!')
+
+slc_client = slc$Slc()
+print('✅ SLC connection established!')
+```
+
+Let's get a brief oveview of the SLC environment
+
+```{r}
+lib_names = slc_client$get_library_names()
+work_lib = slc_client$get_library('WORK')
+datasets = work_lib$get_datasets()
+
+paste('Available libraries:')
+paste(lib_names) 
+paste('WORK library name:', work_lib$get_name())
+paste('Datasets in WORK:', datasets)
+```
+
+At the moment, `WORK` should be void of any dataset. Let's change that and add `large_study_data_r` into it.
+
+```{r}
+work_lib$create_dataset_from_dataframe("large_study_data_sas",large_study_data_r)
+```
+
+Let's check back on the content in `WORK`
+
+datasets = work_lib$get_datasets()
+
+```{r}
+datasets = work_lib$get_datasets()
+paste('Datasets in WORK:', datasets)
+```
+
+Now, let's define our SAS code
+
+```{r}
+my_code <- "
+/* Simple PROC MIXED analysis with residuals output */
+proc mixed data=large_study_data_sas method=reml;
+    class unique_subject_id study_id treatment_group visit;
+    model outcome = visit treatment_group visit*treatment_group / 
+          solution outp=mixed_results;  /* This outputs residuals */
+    random intercept / subject=unique_subject_id;
+    random intercept / subject=study_id;
+    repeated visit / subject=unique_subject_id type=ar(1);    
+    ods output SolutionF=fixed_effects
+               CovParms=variance_components;
+run;
+"
+```
+
+and finally submit it to SLC 
+
+```{r}
+result <- slc_client$submit(my_code)
+```
+
+Let's see if we got any output 
+
+```{r}
+# Get listing output and convert to list in Python
+listing_output <- iterate(slc_client$getListingOutput())
+
+# Process output in R
+cat("SLC Output:\n")
+cat(paste(rep("=", 50), collapse = ""), "\n")
+for (line in listing_output) {
+  cat(trimws(line), "\n")
+}
+```
+
+Let's retrieve the new datasets for further analysis
+
+```{r}
+# Get the fixed effects results as R dataframe
+fixed_effects_df <- work_lib$open_dataset("fixed_effects", "r")$to_data_frame()
+
+# Get the mixed results as R dataframe
+mixed_results_df <- work_lib$open_dataset("mixed_results", "r")$to_data_frame()
+
+# Get the variance components results as R dataframe  
+variance_components_df <- work_lib$open_dataset("variance_components", "r")$to_data_frame()
+
+# View the results
+head(fixed_effects_df)
+head(mixed_results_df)
+head(variance_components_df)
+
+```
+
+# Visualization
+
+Let's start with summary statistics first
+
+```{r}
+# Summary statistics by treatment and visit
+large_study_data_r |>
+  group_by(treatment_group, visit) |>
+  summarise(
+    n = n(),
+    mean_outcome = mean(outcome, na.rm = TRUE),
+    sd_outcome = sd(outcome, na.rm = TRUE),
+    median_outcome = median(outcome, na.rm = TRUE),
+    q1_outcome = quantile(outcome, 0.25, na.rm = TRUE),
+    q3_outcome = quantile(outcome, 0.75, na.rm = TRUE),
+    min_outcome = min(outcome, na.rm = TRUE),
+    max_outcome = max(outcome, na.rm = TRUE),
+    
+    mean_age = mean(age, na.rm = TRUE),
+    sd_age = sd(age, na.rm = TRUE),
+    median_age = median(age, na.rm = TRUE),
+    q1_age = quantile(age, 0.25, na.rm = TRUE),
+    q3_age = quantile(age, 0.75, na.rm = TRUE),
+    min_age = min(age, na.rm = TRUE),
+    max_age = max(age, na.rm = TRUE)
+  ) |>
+  print(n = Inf)  # Show all rows
+
+# Check residuals and model diagnostics 
+# Basic statistics
+summary(mixed_results_df$Resid)
+
+# Histogram of residuals
+library(ggplot2)
+
+# Histogram
+ggplot(mixed_results_df, aes(x = Resid)) +
+  geom_histogram(binwidth = function(x) diff(range(x))/30, fill = "lightblue", color = "black") +
+  labs(title = "Histogram of Residuals",
+       x = "Residuals",
+       y = "Count")
+
+# Q-Q plot
+ggplot(mixed_results_df, aes(sample = Resid)) +
+  stat_qq() +
+  stat_qq_line() +
+  labs(title = "Normal Q-Q Plot of Residuals")
+
+# Create diagnostic plots (equivalent to PROC SGPLOT)
+# Scatter plot of residuals vs predicted values
+ggplot(mixed_results_df, aes(x = Pred, y = Resid)) +
+  geom_point(alpha = 0.6) +
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") +
+  labs(title = "Residuals vs Predicted Values",
+       x = "Predicted Values",
+       y = "Residuals") +
+  theme_minimal()
+
+```
