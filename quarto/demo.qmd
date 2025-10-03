@@ -17,13 +17,13 @@ resource_files:
 
 This document serves as an example on how to efficiently mix and match R and SAS code using SLC. The general idea here is do demonstrate that a data scientist can pick & choose the tool of choice for each task and transparently exchange data between the languages.
 
-Specifically we will 
+Specifically we will
 
-* create a synthetic dataset in R
-* run the analysis in SLC
-* visualise the results in R 
+-   create a synthetic dataset in R
+-   run the analysis in SLC
+-   visualise the results in R
 
-# Data generation 
+# Data generation
 
 ```{r}
 library(tidyverse)
@@ -145,7 +145,7 @@ work_lib$create_dataset_from_dataframe("large_study_data_sas",large_study_data_r
 
 Let's check back on the content in `WORK`
 
-datasets = work_lib$get_datasets()
+datasets = work_lib\$get_datasets()
 
 ```{r}
 datasets = work_lib$get_datasets()
@@ -170,13 +170,13 @@ run;
 "
 ```
 
-and finally submit it to SLC 
+and finally submit it to SLC
 
 ```{r}
 result <- slc_client$submit(my_code)
 ```
 
-Let's see if we got any output 
+Let's see if we got any output
 
 ```{r}
 # Get listing output and convert to list in Python

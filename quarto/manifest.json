@@ -15,11 +15,11 @@
     }
   },
   "quarto": {
-    "version": "1.8.24",
+    "version": "1.7.32",
     "engines": ["knitr"]
   },
   "python": {
-    "version": "3.12.10",
+    "version": "3.13.5",
     "requires": null,
     "package_manager": {
       "name": "pip",
@@ -150,11 +150,13 @@
         "Date/Publication": "2025-08-19 08:30:19 UTC",
         "Encoding": "UTF-8",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-08-20 05:40:33 UTC; unix",
+        "RemotePkgRef": "PKI@0.1-15",
         "RemoteType": "standard",
-        "RemotePkgRef": "PKI",
+        "RemoteEtag": "\"e86a5ac8deb664876f75554b5b6009ca\"",
+        "RemotePackaged": "TRUE",
         "RemoteRef": "PKI",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
+        "RemotePkgPlatform": "source",
         "RemoteSha": "0.1-15"
       }
     },
@@ -244,13 +246,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2025-07-02 16:40:02 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-07-03 18:05:38 UTC; unix",
-        "RemotePkgRef": "Rcpp@1.1.0",
         "RemoteType": "standard",
-        "RemoteEtag": "\"07a5d89d9ce9a0edefcb94e31e2c97ab\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "Rcpp",
         "RemoteRef": "Rcpp",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "1.1.0"
       }
     },
@@ -280,14 +280,12 @@
         "Repository": "RSPM",
         "Date/Publication": "2025-03-08 14:30:06 UTC",
         "Encoding": "UTF-8",
-        "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 03:05:28 UTC; unix",
-        "RemotePkgRef": "RcppTOML@0.2.3",
+        "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-07-03 18:07:05 UTC; unix",
         "RemoteType": "standard",
-        "RemoteEtag": "\"92bd2881bcae109f84abf2e9e60edcc0\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "RcppTOML",
         "RemoteRef": "RcppTOML",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "0.2.3"
       }
     },
@@ -410,13 +408,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2025-03-06 10:50:01 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 02:53:20 UTC; unix",
-        "RemotePkgRef": "bit@4.6.0",
         "RemoteType": "standard",
-        "RemoteEtag": "\"a3747a32f7b7bf8735818f0ecbe444dc\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "bit",
         "RemoteRef": "bit",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "4.6.0"
       }
     },
@@ -695,13 +691,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2025-04-23 13:50:02 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-24 05:44:27 UTC; unix",
-        "RemotePkgRef": "cli@3.6.5",
         "RemoteType": "standard",
-        "RemoteEtag": "\"39bfc89be190c1a9e30b050a8fc98904\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "cli",
         "RemoteRef": "cli",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "3.6.5"
       }
     },
@@ -1112,13 +1106,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2024-05-13 09:33:09 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 02:55:08 UTC; unix",
-        "RemotePkgRef": "farver@2.1.2",
         "RemoteType": "standard",
-        "RemoteEtag": "\"6965f04ac2866583263e743397f31f9c\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "farver",
         "RemoteRef": "farver",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "2.1.2"
       }
     },
@@ -1144,13 +1136,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2024-05-15 09:00:07 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 02:54:14 UTC; unix",
-        "RemotePkgRef": "fastmap@1.2.0",
         "RemoteType": "standard",
-        "RemoteEtag": "\"25dda66a2eb6fb4c068408f192cf8768\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "fastmap",
         "RemoteRef": "fastmap",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "1.2.0"
       }
     },
@@ -1400,13 +1390,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2024-09-30 22:30:01 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 03:00:49 UTC; unix",
-        "RemotePkgRef": "glue@1.8.0",
         "RemoteType": "standard",
-        "RemoteEtag": "\"62d04d9f3f32d2805ac4a2d07636f9fe\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "glue",
         "RemoteRef": "glue",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "1.8.0"
       }
     },
@@ -1541,13 +1529,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2025-05-30 14:10:02 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-05-31 05:26:30 UTC; unix",
-        "RemotePkgRef": "haven@2.5.5",
         "RemoteType": "standard",
-        "RemoteEtag": "\"e5cd2678b90d257ff80834f4a9134c90\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "haven",
         "RemoteRef": "haven",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "2.5.5"
       }
     },
@@ -1685,13 +1671,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2024-04-04 05:03:00 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 03:19:53 UTC; unix",
-        "RemotePkgRef": "htmltools@0.5.8.1",
         "RemoteType": "standard",
-        "RemoteEtag": "\"8959957dd3961d3f4070ddcefae59ac4\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "htmltools",
         "RemoteRef": "htmltools",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "0.5.8.1"
       }
     },
@@ -1788,13 +1772,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2022-12-20 10:00:13 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 02:59:44 UTC; unix",
-        "RemotePkgRef": "isoband@0.2.7",
         "RemoteType": "standard",
-        "RemoteEtag": "\"6f4fd6823004affbb29debf1946858c2\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "isoband",
         "RemoteRef": "isoband",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "0.2.7"
       }
     },
@@ -1824,13 +1806,7 @@
         "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
         "Repository": "RSPM",
         "Date/Publication": "2024-10-04 12:20:01 UTC",
-        "Built": "R 4.5.0; ; 2025-04-05 03:18:22 UTC; unix",
-        "RemoteType": "standard",
-        "RemotePkgRef": "jose",
-        "RemoteRef": "jose",
-        "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
-        "RemoteSha": "1.2.1"
+        "Built": "R 4.5.0; ; 2025-04-05 03:18:22 UTC; unix"
       }
     },
     "jquerylib": {
@@ -1887,13 +1863,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2025-03-27 06:40:02 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 02:56:21 UTC; unix",
-        "RemotePkgRef": "jsonlite@2.0.0",
         "RemoteType": "standard",
-        "RemoteEtag": "\"fc88aa4b0297828319b393627cf9af2c\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "jsonlite",
         "RemoteRef": "jsonlite",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "2.0.0"
       }
     },
@@ -2058,13 +2032,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2024-12-08 12:10:02 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 03:06:08 UTC; unix",
-        "RemotePkgRef": "lubridate@1.9.4",
         "RemoteType": "standard",
-        "RemoteEtag": "\"aa5ae60a75188b7056583cf6646beea6\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "lubridate",
         "RemoteRef": "lubridate",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "1.9.4"
       }
     },
@@ -2182,13 +2154,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2025-03-17 20:20:02 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 03:05:38 UTC; unix",
-        "RemotePkgRef": "mime@0.13",
         "RemoteType": "standard",
-        "RemoteEtag": "\"5d36002aa1bdc3aff6b65a167b89a5e0\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "mime",
         "RemoteRef": "mime",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "0.13"
       }
     },
@@ -2283,13 +2253,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2025-05-26 13:00:02 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-05-27 05:25:08 UTC; unix",
-        "RemotePkgRef": "openssl@2.3.3",
         "RemoteType": "standard",
-        "RemoteEtag": "\"70b0548c37a52f7784fe30fdf8a0d5bd\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "openssl",
         "RemoteRef": "openssl",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "2.3.3"
       }
     },
@@ -2318,13 +2286,7 @@
         "Maintainer": "Aron Atkins <aron@posit.co>",
         "Repository": "RSPM",
         "Date/Publication": "2025-06-16 20:00:02 UTC",
-        "Built": "R 4.5.0; ; 2025-06-17 04:42:31 UTC; unix",
-        "RemoteType": "standard",
-        "RemotePkgRef": "packrat",
-        "RemoteRef": "packrat",
-        "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
-        "RemoteSha": "0.9.3"
+        "Built": "R 4.5.0; ; 2025-06-17 04:42:31 UTC; unix"
       }
     },
     "pillar": {
@@ -2416,13 +2378,11 @@
         "Date/Publication": "2022-11-29 11:12:53 UTC",
         "Encoding": "UTF-8",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 03:09:09 UTC; unix",
-        "RemotePkgRef": "png@0.1-8",
         "RemoteType": "standard",
-        "RemoteEtag": "\"47caf2cd9bd0d5f9adb7293757764242\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "png",
         "RemoteRef": "png",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "0.1-8"
       }
     },
@@ -2450,10 +2410,10 @@
         "Date/Publication": "2023-09-24 21:10:02 UTC",
         "Built": "R 4.5.0; ; 2025-04-05 03:12:28 UTC; unix",
         "RemoteType": "standard",
-        "RemotePkgRef": "prettyunits",
         "RemoteRef": "prettyunits",
+        "RemotePkgRef": "prettyunits",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
+        "RemotePkgPlatform": "source",
         "RemoteSha": "1.2.0"
       }
     },
@@ -2552,13 +2512,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2025-04-12 09:50:01 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-14 18:39:46 UTC; unix",
-        "RemotePkgRef": "ps@1.9.1",
         "RemoteType": "standard",
-        "RemoteEtag": "\"852fb6e0a8450f2f5512ee95b5b45298\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "ps",
         "RemoteRef": "ps",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "1.9.1"
       }
     },
@@ -2665,13 +2623,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2021-01-31 05:40:02 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-06-19 19:28:29 UTC; unix",
-        "RemotePkgRef": "rappdirs@0.3.3",
         "RemoteType": "standard",
-        "RemoteEtag": "\"7b727c1cfb3ce5a1bf8c89eb3feae8d7\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "rappdirs",
         "RemoteRef": "rappdirs",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "0.3.3"
       }
     },
@@ -2742,13 +2698,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2025-03-07 17:10:02 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 04:00:22 UTC; unix",
-        "RemotePkgRef": "readxl@1.4.5",
         "RemoteType": "standard",
-        "RemoteEtag": "\"f09a451083fd77a252995b02e32ff166\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "readxl",
         "RemoteRef": "readxl",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "1.4.5"
       }
     },
@@ -2841,7 +2795,12 @@
         "Maintainer": "Kevin Ushey <kevin@rstudio.com>",
         "Repository": "RSPM",
         "Date/Publication": "2025-07-24 21:40:02 UTC",
-        "Built": "R 4.5.1; ; 2025-09-11 19:41:36 UTC; unix"
+        "Built": "R 4.5.0; ; 2025-07-25 05:29:01 UTC; unix",
+        "RemoteType": "standard",
+        "RemotePkgRef": "renv",
+        "RemoteRef": "renv",
+        "RemoteRepos": "http://ppm:4242/cran/2025-09-09",
+        "RemoteSha": "1.1.5"
       }
     },
     "reprex": {
@@ -2912,13 +2871,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2025-07-21 16:50:02 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-07-22 05:30:30 UTC; unix",
-        "RemotePkgRef": "reticulate@1.43.0",
         "RemoteType": "standard",
-        "RemoteEtag": "\"13773add96918c4d6b2388bda1462297\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "reticulate",
         "RemoteRef": "reticulate",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "1.43.0"
       }
     },
@@ -3061,13 +3018,7 @@
         "Maintainer": "Aron Atkins <aron@posit.co>",
         "Repository": "RSPM",
         "Date/Publication": "2025-08-28 13:50:02 UTC",
-        "Built": "R 4.5.0; ; 2025-08-29 06:03:16 UTC; unix",
-        "RemoteType": "standard",
-        "RemotePkgRef": "rsconnect",
-        "RemoteRef": "rsconnect",
-        "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
-        "RemoteSha": "1.5.1"
+        "Built": "R 4.5.0; ; 2025-08-29 06:03:16 UTC; unix"
       }
     },
     "rstudioapi": {
@@ -3165,13 +3116,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2025-04-11 19:50:02 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-14 18:40:35 UTC; unix",
-        "RemotePkgRef": "sass@0.4.10",
         "RemoteType": "standard",
-        "RemoteEtag": "\"fbb2036dd09d0ffa04a8b8611883acbc\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "sass",
         "RemoteRef": "sass",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "0.4.10"
       }
     },
@@ -3267,13 +3216,7 @@
         "Maintainer": "E. David Aja <david@posit.co>",
         "Repository": "RSPM",
         "Date/Publication": "2025-09-02 12:00:02 UTC",
-        "Built": "R 4.5.0; ; 2025-09-03 17:40:25 UTC; unix",
-        "RemoteType": "standard",
-        "RemotePkgRef": "snowflakeauth",
-        "RemoteRef": "snowflakeauth",
-        "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
-        "RemoteSha": "0.2.0"
+        "Built": "R 4.5.0; ; 2025-09-03 17:40:25 UTC; unix"
       }
     },
     "stringi": {
@@ -3304,13 +3247,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2025-03-27 13:10:02 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 03:15:50 UTC; unix",
-        "RemotePkgRef": "stringi@1.8.7",
         "RemoteType": "standard",
-        "RemoteEtag": "\"1128b303180e4be32efbdb267b7d88e5\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "stringi",
         "RemoteRef": "stringi",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "1.8.7"
       }
     },
@@ -3413,13 +3354,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2025-04-30 17:50:02 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-05-01 06:28:10 UTC; unix",
-        "RemotePkgRef": "systemfonts@1.2.3",
         "RemoteType": "standard",
-        "RemoteEtag": "\"befdb9c192df1ef1079cb22dea5256ea\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "systemfonts",
         "RemoteRef": "systemfonts",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "1.2.3"
       }
     },
@@ -3633,14 +3572,12 @@
         "Maintainer": "Vitalie Spinu <spinuvit@gmail.com>",
         "Repository": "RSPM",
         "Date/Publication": "2024-01-18 09:20:02 UTC",
-        "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-06-03 04:55:23 UTC; unix",
-        "RemotePkgRef": "timechange@0.3.0",
+        "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 03:00:21 UTC; unix",
         "RemoteType": "standard",
-        "RemoteEtag": "\"2aeed2bac45a3a25933d90b50547b25e\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "timechange",
         "RemoteRef": "timechange",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "0.3.0"
       }
     },
@@ -3703,13 +3640,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2025-03-15 22:50:02 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 03:00:44 UTC; unix",
-        "RemotePkgRef": "tzdb@0.5.0",
         "RemoteType": "standard",
-        "RemoteEtag": "\"d7a4e83d4df7d949a57dc8045b26c376\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "tzdb",
         "RemoteRef": "tzdb",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "0.5.0"
       }
     },
@@ -3803,13 +3738,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2023-12-01 23:50:02 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 03:34:38 UTC; unix",
-        "RemotePkgRef": "vctrs@0.6.5",
         "RemoteType": "standard",
-        "RemoteEtag": "\"c53410198d33808a44036724109b99a1\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "vctrs",
         "RemoteRef": "vctrs",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "0.6.5"
       }
     },
@@ -3984,13 +3917,11 @@
         "Repository": "RSPM",
         "Date/Publication": "2025-08-20 17:00:02 UTC",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-08-21 19:21:50 UTC; unix",
-        "RemotePkgRef": "xml2@1.4.0",
         "RemoteType": "standard",
-        "RemoteEtag": "\"b91f8877027e9a2285998a8315d34466\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "xml2",
         "RemoteRef": "xml2",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "1.4.0"
       }
     },
@@ -4016,44 +3947,81 @@
         "Date/Publication": "2024-07-26 15:10:02 UTC",
         "Encoding": "UTF-8",
         "Built": "R 4.5.0; x86_64-pc-linux-gnu; 2025-04-05 03:12:36 UTC; unix",
-        "RemotePkgRef": "yaml@2.3.10",
         "RemoteType": "standard",
-        "RemoteEtag": "\"9a72e2e0c724f95c2703729beefee0ec\"",
-        "RemotePackaged": "TRUE",
+        "RemotePkgRef": "yaml",
         "RemoteRef": "yaml",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/rhel9/latest",
-        "RemotePkgPlatform": "source",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-rocky-9.3",
         "RemoteSha": "2.3.10"
       }
     }
   },
   "files": {
-    ".posit/publish/deployments/deployment-7RNS.toml": {
-      "checksum": "263b5bff04b18b90c6a4329dccbfa63a"
+    ".posit/publish/deployments/deployment-A7VG.toml": {
+      "checksum": "50a8d8dfee01c33680afd27e109c577c"
     },
-    ".posit/publish/deployments/deployment-JLIB.toml": {
-      "checksum": "562155c3b0ec40c891858d8f02b02a46"
-    },
-    ".posit/publish/deployments/deployment-VICT.toml": {
-      "checksum": "4cd3eb1bdf80a07f7748cbf2f125b5ad"
-    },
-    ".posit/publish/Mixed Effects Modeling with R -H8SD.toml": {
-      "checksum": "64bfcdcf4c6b8ee45448fdb09fca3dd7"
-    },
-    ".posit/publish/Mixed Effects Modeling with R -TGOM.toml": {
-      "checksum": "83e8d77e03f47d7793657d4f22e60834"
-    },
-    ".posit/publish/slc-quarto-RFOK.toml": {
-      "checksum": "f01fa4e309d43af054044c28c293553f"
+    ".posit/publish/Mixed Effects Modeling with R -F5US.toml": {
+      "checksum": "33b775366123f513a70d17621bdf9034"
     },
     ".Rprofile": {
-      "checksum": "dc3aa9c77a62c6929d0fec154957ac9f"
+      "checksum": "64dc2a0c4fe4d997ed4ad80eb70889dc"
+    },
+    "demo_files/figure-html/unnamed-chunk-10-1.png": {
+      "checksum": "0a9fcd25056f59ac866e6401dabf2b62"
+    },
+    "demo_files/figure-html/unnamed-chunk-10-2.png": {
+      "checksum": "e6131f5772584d1c4f7ce4353dcb65b7"
+    },
+    "demo_files/figure-html/unnamed-chunk-10-3.png": {
+      "checksum": "32ac41008ba30d70093070c7048fe80a"
+    },
+    "demo_files/libs/bootstrap/bootstrap-619139c91a28b186e9282754cffa9d39.min.css": {
+      "checksum": "619139c91a28b186e9282754cffa9d39"
+    },
+    "demo_files/libs/bootstrap/bootstrap-icons.css": {
+      "checksum": "2318f137d201fbf51601fa0faba6bef7"
+    },
+    "demo_files/libs/bootstrap/bootstrap-icons.woff": {
+      "checksum": "1a51dfbe5467607389d603c02a77cd10"
+    },
+    "demo_files/libs/bootstrap/bootstrap.min.js": {
+      "checksum": "e2b09c06f0e714b6144a6788a28e3950"
+    },
+    "demo_files/libs/clipboard/clipboard.min.js": {
+      "checksum": "15f52a1ee547f2bdd46e56747332ca2d"
+    },
+    "demo_files/libs/quarto-html/anchor.min.js": {
+      "checksum": "91bcf6cd1fd88fec3f109811e5fc3546"
+    },
+    "demo_files/libs/quarto-html/popper.min.js": {
+      "checksum": "3a4a291ccf3f1ea0f82b641542fd3827"
+    },
+    "demo_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css": {
+      "checksum": "37eea08aefeeee20ff55810ff984fec1"
+    },
+    "demo_files/libs/quarto-html/quarto.js": {
+      "checksum": "6f4245742deb3cc92337dbe2701ccfe1"
+    },
+    "demo_files/libs/quarto-html/tabsets/tabsets.js": {
+      "checksum": "e8d6a8862b33ccc461f8fd532e05b365"
+    },
+    "demo_files/libs/quarto-html/tippy.css": {
+      "checksum": "ebd6f8ce46a677e1a4f5f8a8317109a9"
+    },
+    "demo_files/libs/quarto-html/tippy.umd.min.js": {
+      "checksum": "d828775275749701b48bd9d958814111"
+    },
+    "demo.html": {
+      "checksum": "5e916db5ec25f53a5ff47985a473883c"
     },
     "demo.qmd": {
-      "checksum": "1df37bc7a69808f0aa897740d0ff0da9"
+      "checksum": "483345ac93093e8cb911cff8836879ae"
+    },
+    "household_analysis.sas": {
+      "checksum": "43f8d0b1ad133be0635464754da67a7e"
     },
     "renv.lock": {
-      "checksum": "af3b6ebe1786c513ae77bf1db3eb2dcd"
+      "checksum": "7571b0e28b7699646c1e496a74c054eb"
     },
     "requirements.txt": {
       "checksum": "5bbbe3b67f2853cd571ce9cc81ba8063"
