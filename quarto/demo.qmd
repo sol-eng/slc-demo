@@ -41,39 +41,41 @@ large_study_data_r <- expand_grid(
   mutate(
     # Create unique subject identifier across all studies/sites
     unique_subject_id = (study_id * 100) + (site_id * 20) + subject_id,
-    
+
     # Generate subject-level random effects (same for each subject across visits)
-    subject_intercept = rep(rnorm(n_distinct(unique_subject_id), mean = 0, sd = 2), 
-                           each = 4)[row_number()],
-    
+    subject_intercept = rep(
+      rnorm(n_distinct(unique_subject_id), mean = 0, sd = 2),
+      each = 4
+    )[row_number()],
+
     # Time-varying covariates
     age = runif(n(), min = 18, max = 75),
     gender = rbinom(n(), size = 1, prob = 0.52), # 52% female
     treatment = rbinom(n(), size = 1, prob = 0.5), # 50% treatment
     baseline_score = rnorm(n(), mean = 50, sd = 10),
-    
+
     # Study and site effects
     study_effect = rnorm(n(), mean = 0, sd = 1.5),
     site_effect = rnorm(n(), mean = 0, sd = 1.0),
-    
+
     # Generate outcome with complex mixed effects structure
     time_trend = visit * 2.5,
     treatment_effect = treatment * 8.3,
     age_effect = (age - 45) * 0.2,
     gender_effect = gender * 3.1,
-    
+
     # Random error
     error = rnorm(n(), mean = 0, sd = 3.2),
-    
+
     # Final outcome
-    outcome = 45 + 
-      time_trend + 
-      treatment_effect + 
-      age_effect + 
-      gender_effect + 
-      study_effect + 
-      site_effect + 
-      subject_intercept + 
+    outcome = 45 +
+      time_trend +
+      treatment_effect +
+      age_effect +
+      gender_effect +
+      study_effect +
+      site_effect +
+      subject_intercept +
       error
   ) |>
   # Add some missing data patterns
@@ -114,7 +116,7 @@ head(large_study_data_r)
 library(reticulate)
 
 # Set up Python path to include SLC
-py_run_string("import sys; sys.path.insert(0, '/opt/altair/slc/2025/python')")
+py_run_string("import sys; sys.path.insert(0, '/opt/altair/slc/2026/python')")
 
 slc <- import("slc.slc")
 slc_lib <- import("slc.library")
@@ -132,7 +134,7 @@ work_lib = slc_client$get_library('WORK')
 datasets = work_lib$get_datasets()
 
 paste('Available libraries:')
-paste(lib_names) 
+paste(lib_names)
 paste('WORK library name:', work_lib$get_name())
 paste('Datasets in WORK:', datasets)
 ```
@@ -140,7 +142,10 @@ paste('Datasets in WORK:', datasets)
 At the moment, `WORK` should be void of any dataset. Let's change that and add `large_study_data_r` into it.
 
 ```{r}
-work_lib$create_dataset_from_dataframe("large_study_data_sas",large_study_data_r)
+work_lib$create_dataset_from_dataframe(
+  "large_study_data_sas",
+  large_study_data_r
+)
 ```
 
 Let's check back on the content in `WORK`
@@ -199,8 +204,11 @@ fixed_effects_df <- work_lib$open_dataset("fixed_effects", "r")$to_data_frame()
 # Get the mixed results as R dataframe
 mixed_results_df <- work_lib$open_dataset("mixed_results", "r")$to_data_frame()
 
-# Get the variance components results as R dataframe  
-variance_components_df <- work_lib$open_dataset("variance_components", "r")$to_data_frame()
+# Get the variance components results as R dataframe
+variance_components_df <- work_lib$open_dataset(
+  "variance_components",
+  "r"
+)$to_data_frame()
 
 # View the results
 head(fixed_effects_df)
@@ -226,7 +234,7 @@ large_study_data_r |>
     q3_outcome = quantile(outcome, 0.75, na.rm = TRUE),
     min_outcome = min(outcome, na.rm = TRUE),
     max_outcome = max(outcome, na.rm = TRUE),
-    
+
     mean_age = mean(age, na.rm = TRUE),
     sd_age = sd(age, na.rm = TRUE),
     median_age = median(age, na.rm = TRUE),
@@ -235,9 +243,9 @@ large_study_data_r |>
     min_age = min(age, na.rm = TRUE),
     max_age = max(age, na.rm = TRUE)
   ) |>
-  print(n = Inf)  # Show all rows
+  print(n = Inf) # Show all rows
 
-# Check residuals and model diagnostics 
+# Check residuals and model diagnostics
 # Basic statistics
 summary(mixed_results_df$Resid)
 
@@ -246,10 +254,12 @@ library(ggplot2)
 
 # Histogram
 ggplot(mixed_results_df, aes(x = Resid)) +
-  geom_histogram(binwidth = function(x) diff(range(x))/30, fill = "lightblue", color = "black") +
-  labs(title = "Histogram of Residuals",
-       x = "Residuals",
-       y = "Count")
+  geom_histogram(
+    binwidth = function(x) diff(range(x)) / 30,
+    fill = "lightblue",
+    color = "black"
+  ) +
+  labs(title = "Histogram of Residuals", x = "Residuals", y = "Count")
 
 # Q-Q plot
 ggplot(mixed_results_df, aes(sample = Resid)) +
@@ -262,9 +272,11 @@ ggplot(mixed_results_df, aes(sample = Resid)) +
 ggplot(mixed_results_df, aes(x = Pred, y = Resid)) +
   geom_point(alpha = 0.6) +
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") +
-  labs(title = "Residuals vs Predicted Values",
-       x = "Predicted Values",
-       y = "Residuals") +
+  labs(
+    title = "Residuals vs Predicted Values",
+    x = "Predicted Values",
+    y = "Residuals"
+  ) +
   theme_minimal()
 
 ```
