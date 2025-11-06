@@ -55,7 +55,7 @@ server <- function(input, output, session) {
     withProgress(message = "Initializing SLC...", value = 0.1, {
       
       # Set up Python path to include SLC
-      py_run_string("import sys; sys.path.insert(0, '/opt/altair/slc/2025/python')")
+      py_run_string("import sys; sys.path.insert(0, '/opt/altair/slc/2026/python')")
       
       slc <- import("slc.slc")
       slc_lib <- import("slc.library")
