@@ -25,7 +25,6 @@ Same approach than in `/R`, but wrapped everything into quarto code chunks. We n
 
 Contains Quarto documents for reproducible data analysis and reporting:
 - `demo.qmd`: Example Quarto document
-- `manifest.json`: Configuration file for Quarto
 - `renv.lock`: R environment dependency lock file
 
 A sample document can be viewed at [https://pub.current.posit.team/public/quarto-slc/](https://pub.current.posit.team/public/quarto-slc/)
