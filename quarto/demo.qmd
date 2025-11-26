@@ -9,9 +9,18 @@ format:
 execute:
   engine: knitr
 resource_files:
-- requirements.txt
 - renv.lock
+filters:
+  - slc
 ---
+
+```{r setup}
+#| echo: false
+library(slcr)
+if (!has_slc_extension()) {
+  install_slc_extension(force = TRUE)
+}
+```
 
 # Introduction
 
@@ -23,6 +32,8 @@ Specifically we will
 -   run the analysis in SLC
 -   visualise the results in R
 
+We are making use of a new R package named `slcr` (cf. [github](https://sol-eng.github.io/slcr)) that also contains a quarto extension.
+
 # Data generation
 
 ```{r}
@@ -32,7 +43,7 @@ library(tidyverse)
 set.seed(12345)
 
 # Generate manageable synthetic dataset for mixed effects modeling
-large_study_data_r <- expand_grid(
+large_study_data <- expand_grid(
   study_id = 1:5,
   site_id = 1:2,
   subject_id = 1:20,
@@ -96,7 +107,7 @@ large_study_data_r <- expand_grid(
   )
 
 # Check the dataset size (equivalent to PROC SQL)
-large_study_data_r |>
+large_study_data |>
   summarise(
     total_observations = n(),
     num_studies = n_distinct(study_id),
@@ -105,64 +116,21 @@ large_study_data_r |>
   )
 
 # Preview the data
-head(large_study_data_r)
+head(large_study_data)
 ```
 
 # Run analysis in SLC
 
-## Initialise connection to SLC via reticulate/SLC
+::: {.callout-note}
+Note that the SLC code chunk header (not visible in the rendered doc) defines both input and output data objects:
 
-```{r}
-library(reticulate)
+- `input_data="large_study_data"`: R data frame passed to SAS
+- `output_data="mixed_results,fixed_effects,variance_components"`: SAS datasets returned to R
+:::
 
-# Set up Python path to include SLC
-py_run_string("import sys; sys.path.insert(0, '/opt/altair/slc/2026/python')")
-
-slc <- import("slc.slc")
-slc_lib <- import("slc.library")
-print('✅ SLC classes imported successfully!')
-
-slc_client = slc$Slc()
-print('✅ SLC connection established!')
-```
-
-Let's get a brief oveview of the SLC environment
-
-```{r}
-lib_names = slc_client$get_library_names()
-work_lib = slc_client$get_library('WORK')
-datasets = work_lib$get_datasets()
-
-paste('Available libraries:')
-paste(lib_names)
-paste('WORK library name:', work_lib$get_name())
-paste('Datasets in WORK:', datasets)
-```
-
-At the moment, `WORK` should be void of any dataset. Let's change that and add `large_study_data_r` into it.
-
-```{r}
-work_lib$create_dataset_from_dataframe(
-  "large_study_data_sas",
-  large_study_data_r
-)
-```
-
-Let's check back on the content in `WORK`
-
-datasets = work_lib\$get_datasets()
-
-```{r}
-datasets = work_lib$get_datasets()
-paste('Datasets in WORK:', datasets)
-```
-
-Now, let's define our SAS code
-
-```{r}
-my_code <- "
+```{slc input_data="large_study_data",output_data="mixed_results,fixed_effects,variance_components"}
 /* Simple PROC MIXED analysis with residuals output */
-proc mixed data=large_study_data_sas method=reml;
+proc mixed data=large_study_data method=reml;
     class unique_subject_id study_id treatment_group visit;
     model outcome = visit treatment_group visit*treatment_group / 
           solution outp=mixed_results;  /* This outputs residuals */
@@ -172,50 +140,8 @@ proc mixed data=large_study_data_sas method=reml;
     ods output SolutionF=fixed_effects
                CovParms=variance_components;
 run;
-"
 ```
 
-and finally submit it to SLC
-
-```{r}
-result <- slc_client$submit(my_code)
-```
-
-Let's see if we got any output
-
-```{r}
-# Get listing output and convert to list in Python
-listing_output <- iterate(slc_client$getListingOutput())
-
-# Process output in R
-cat("SLC Output:\n")
-cat(paste(rep("=", 50), collapse = ""), "\n")
-for (line in listing_output) {
-  cat(trimws(line), "\n")
-}
-```
-
-Let's retrieve the new datasets for further analysis
-
-```{r}
-# Get the fixed effects results as R dataframe
-fixed_effects_df <- work_lib$open_dataset("fixed_effects", "r")$to_data_frame()
-
-# Get the mixed results as R dataframe
-mixed_results_df <- work_lib$open_dataset("mixed_results", "r")$to_data_frame()
-
-# Get the variance components results as R dataframe
-variance_components_df <- work_lib$open_dataset(
-  "variance_components",
-  "r"
-)$to_data_frame()
-
-# View the results
-head(fixed_effects_df)
-head(mixed_results_df)
-head(variance_components_df)
-
-```
 
 # Visualization
 
@@ -223,7 +149,7 @@ Let's start with summary statistics first
 
 ```{r}
 # Summary statistics by treatment and visit
-large_study_data_r |>
+large_study_data |>
   group_by(treatment_group, visit) |>
   summarise(
     n = n(),
@@ -247,13 +173,13 @@ large_study_data_r |>
 
 # Check residuals and model diagnostics
 # Basic statistics
-summary(mixed_results_df$Resid)
+summary(mixed_results$Resid)
 
 # Histogram of residuals
 library(ggplot2)
 
 # Histogram
-ggplot(mixed_results_df, aes(x = Resid)) +
+ggplot(mixed_results, aes(x = Resid)) +
   geom_histogram(
     binwidth = function(x) diff(range(x)) / 30,
     fill = "lightblue",
@@ -262,14 +188,14 @@ ggplot(mixed_results_df, aes(x = Resid)) +
   labs(title = "Histogram of Residuals", x = "Residuals", y = "Count")
 
 # Q-Q plot
-ggplot(mixed_results_df, aes(sample = Resid)) +
+ggplot(mixed_results, aes(sample = Resid)) +
   stat_qq() +
   stat_qq_line() +
   labs(title = "Normal Q-Q Plot of Residuals")
 
 # Create diagnostic plots (equivalent to PROC SGPLOT)
 # Scatter plot of residuals vs predicted values
-ggplot(mixed_results_df, aes(x = Pred, y = Resid)) +
+ggplot(mixed_results, aes(x = Pred, y = Resid)) +
   geom_point(alpha = 0.6) +
   geom_hline(yintercept = 0, color = "red", linetype = "dashed") +
   labs(

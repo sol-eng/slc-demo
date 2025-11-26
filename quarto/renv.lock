@@ -8,11 +8,6 @@
       }
     ]
   },
-  "Python": {
-    "Version": "3.12.10",
-    "Type": "virtualenv",
-    "Name": "./renv/python/virtualenvs/renv-python-3.12"
-  },
   "Packages": {
     "DBI": {
       "Package": "DBI",
@@ -143,29 +138,6 @@
       "Author": "Douglas Bates [aut] (<https://orcid.org/0000-0001-8316-9503>), Martin Maechler [aut, cre] (<https://orcid.org/0000-0002-8685-9910>), Mikael Jagan [aut] (<https://orcid.org/0000-0002-3542-2938>), Timothy A. Davis [ctb] (<https://orcid.org/0000-0001-7614-6899>, SuiteSparse libraries, collaborators listed in dir(system.file(\"doc\", \"SuiteSparse\", package=\"Matrix\"), pattern=\"License\", full.names=TRUE, recursive=TRUE)), George Karypis [ctb] (<https://orcid.org/0000-0003-2753-1437>, METIS library, Copyright: Regents of the University of Minnesota), Jason Riedy [ctb] (<https://orcid.org/0000-0002-4345-4200>, GNU Octave's condest() and onenormest(), Copyright: Regents of the University of California), Jens Oehlschlägel [ctb] (initial nearPD()), R Core Team [ctb] (02zz1nj61, base R's matrix implementation)",
       "Maintainer": "Martin Maechler <mmaechler+Matrix@gmail.com>",
       "Repository": "CRAN"
-    },
-    "PKI": {
-      "Package": "PKI",
-      "Version": "0.1-15",
-      "Source": "Repository",
-      "Title": "Public Key Infrastucture for R Based on the X.509 Standard",
-      "Authors@R": "person(\"Simon\", \"Urbanek\", role=c(\"aut\",\"cre\",\"cph\"), email=\"Simon.Urbanek@r-project.org\", comment=c(\"https://urbanek.nz\", ORCID=\"0000-0003-2297-1732\"))",
-      "Maintainer": "Simon Urbanek <Simon.Urbanek@r-project.org>",
-      "Depends": [
-        "R (>= 2.9.0)",
-        "base64enc"
-      ],
-      "Enhances": [
-        "gmp"
-      ],
-      "Description": "Public Key Infrastucture functions such as verifying certificates, RSA encription and signing which can be used to build PKI infrastructure and perform cryptographic tasks.",
-      "License": "GPL-2 | GPL-3 | file LICENSE",
-      "URL": "http://www.rforge.net/PKI",
-      "SystemRequirements": "OpenSSL library and headers (openssl-dev or similar)",
-      "NeedsCompilation": "yes",
-      "Author": "Simon Urbanek [aut, cre, cph] (https://urbanek.nz, ORCID: <https://orcid.org/0000-0003-2297-1732>)",
-      "Repository": "RSPM",
-      "Encoding": "UTF-8"
     },
     "R6": {
       "Package": "R6",
@@ -1996,38 +1968,6 @@
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
       "Repository": "RSPM"
     },
-    "jose": {
-      "Package": "jose",
-      "Version": "1.2.1",
-      "Source": "Repository",
-      "Type": "Package",
-      "Title": "JavaScript Object Signing and Encryption",
-      "Authors@R": "person(\"Jeroen\", \"Ooms\", role = c(\"aut\", \"cre\"),  email = \"jeroenooms@gmail.com\", comment = c(ORCID = \"0000-0002-4035-0289\"))",
-      "Description": "Read and write JSON Web Keys (JWK, rfc7517), generate and verify JSON Web Signatures (JWS, rfc7515) and encode/decode JSON Web Tokens (JWT, rfc7519) <https://datatracker.ietf.org/wg/jose/documents/>. These standards provide  modern signing and encryption formats that are natively supported by browsers via the JavaScript WebCryptoAPI <https://www.w3.org/TR/WebCryptoAPI/#jose>,  and used by services like OAuth 2.0, LetsEncrypt, and Github Apps.",
-      "License": "MIT + file LICENSE",
-      "URL": "https://r-lib.r-universe.dev/jose",
-      "BugReports": "https://github.com/r-lib/jose/issues",
-      "Depends": [
-        "openssl (>= 1.2.1)"
-      ],
-      "Imports": [
-        "jsonlite"
-      ],
-      "RoxygenNote": "7.1.2",
-      "VignetteBuilder": "knitr",
-      "Suggests": [
-        "spelling",
-        "testthat",
-        "knitr",
-        "rmarkdown"
-      ],
-      "Encoding": "UTF-8",
-      "Language": "en-US",
-      "NeedsCompilation": "no",
-      "Author": "Jeroen Ooms [aut, cre] (<https://orcid.org/0000-0002-4035-0289>)",
-      "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
-      "Repository": "RSPM"
-    },
     "jquerylib": {
       "Package": "jquerylib",
       "Version": "0.1.4",
@@ -2509,42 +2449,6 @@
       "NeedsCompilation": "yes",
       "Author": "Jeroen Ooms [aut, cre] (ORCID: <https://orcid.org/0000-0002-4035-0289>), Oliver Keyes [ctb]",
       "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
-      "Repository": "RSPM"
-    },
-    "packrat": {
-      "Package": "packrat",
-      "Version": "0.9.3",
-      "Source": "Repository",
-      "Type": "Package",
-      "Title": "A Dependency Management System for Projects and their R Package Dependencies",
-      "Authors@R": "c( person(\"Aron\", \"Atkins\", , \"aron@posit.co\", role = c(\"aut\", \"cre\")), person(\"Toph\", \"Allen\", role = \"aut\"), person(\"Kevin\", \"Ushey\", role = \"aut\"), person(\"Jonathan\", \"McPherson\", role = \"aut\"), person(\"Joe\", \"Cheng\", role = \"aut\"), person(\"JJ\", \"Allaire\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
-      "Description": "Manage the R packages your project depends on in an isolated, portable, and reproducible way.",
-      "License": "GPL-2",
-      "URL": "https://github.com/rstudio/packrat",
-      "BugReports": "https://github.com/rstudio/packrat/issues",
-      "Depends": [
-        "R (>= 3.0.0)"
-      ],
-      "Imports": [
-        "tools",
-        "utils"
-      ],
-      "Suggests": [
-        "devtools",
-        "httr",
-        "knitr",
-        "mockery",
-        "rmarkdown",
-        "testthat (>= 3.0.0)",
-        "webfakes",
-        "withr"
-      ],
-      "Config/testthat/edition": "3",
-      "Encoding": "UTF-8",
-      "RoxygenNote": "7.3.2",
-      "NeedsCompilation": "no",
-      "Author": "Aron Atkins [aut, cre], Toph Allen [aut], Kevin Ushey [aut], Jonathan McPherson [aut], Joe Cheng [aut], JJ Allaire [aut], Posit Software, PBC [cph, fnd]",
-      "Maintainer": "Aron Atkins <aron@posit.co>",
       "Repository": "RSPM"
     },
     "pillar": {
@@ -3336,64 +3240,6 @@
       "Maintainer": "Kirill Müller <kirill@cynkra.com>",
       "Repository": "RSPM"
     },
-    "rsconnect": {
-      "Package": "rsconnect",
-      "Version": "1.5.1",
-      "Source": "Repository",
-      "Type": "Package",
-      "Title": "Deploy Docs, Apps, and APIs to 'Posit Connect', 'shinyapps.io', and 'RPubs'",
-      "Authors@R": "c( person(\"Aron\", \"Atkins\", , \"aron@posit.co\", role = c(\"aut\", \"cre\")), person(\"Toph\", \"Allen\", role = \"aut\"), person(\"Hadley\", \"Wickham\", role = \"aut\"), person(\"Jonathan\", \"McPherson\", role = \"aut\"), person(\"JJ\", \"Allaire\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
-      "Description": "Programmatic deployment interface for 'RPubs', 'shinyapps.io', and 'Posit Connect'. Supported content types include R Markdown documents, Shiny applications, Plumber APIs, plots, and static web content.",
-      "License": "GPL-2",
-      "URL": "https://rstudio.github.io/rsconnect/, https://github.com/rstudio/rsconnect",
-      "BugReports": "https://github.com/rstudio/rsconnect/issues",
-      "Depends": [
-        "R (>= 3.5.0)"
-      ],
-      "Imports": [
-        "cli",
-        "curl",
-        "digest",
-        "jsonlite",
-        "lifecycle",
-        "openssl (>= 2.0.0)",
-        "PKI",
-        "packrat (>= 0.6)",
-        "renv (>= 1.0.0)",
-        "rlang (>= 1.0.0)",
-        "rstudioapi (>= 0.5)",
-        "snowflakeauth",
-        "tools",
-        "yaml (>= 2.1.5)",
-        "utils"
-      ],
-      "Suggests": [
-        "Biobase",
-        "BiocManager",
-        "foreign",
-        "knitr",
-        "MASS",
-        "plumber (>= 0.3.2)",
-        "quarto",
-        "RCurl",
-        "reticulate",
-        "rmarkdown (>= 1.1)",
-        "shiny",
-        "testthat (>= 3.1.9)",
-        "webfakes",
-        "withr"
-      ],
-      "VignetteBuilder": "knitr, rmarkdown",
-      "Config/Needs/website": "tidyverse/tidytemplate",
-      "Config/testthat/edition": "3",
-      "Config/testthat/parallel": "true",
-      "Encoding": "UTF-8",
-      "RoxygenNote": "7.3.2",
-      "NeedsCompilation": "no",
-      "Author": "Aron Atkins [aut, cre], Toph Allen [aut], Hadley Wickham [aut], Jonathan McPherson [aut], JJ Allaire [aut], Posit Software, PBC [cph, fnd]",
-      "Maintainer": "Aron Atkins <aron@posit.co>",
-      "Repository": "RSPM"
-    },
     "rstudioapi": {
       "Package": "rstudioapi",
       "Version": "0.17.1",
@@ -3581,36 +3427,42 @@
       "Repository": "RSPM",
       "Encoding": "UTF-8"
     },
-    "snowflakeauth": {
-      "Package": "snowflakeauth",
-      "Version": "0.2.0",
-      "Source": "Repository",
-      "Title": "Authentication Helpers for 'Snowflake'",
-      "Authors@R": "c( person(\"Aaron\", \"Jacobs\", , \"aaron.jacobs@posit.co\", role = c(\"aut\")), person(\"E. David\", \"Aja\", , \"david@posit.co\", role = c(\"aut\", \"cre\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
-      "Description": "Authentication helpers for 'Snowflake'. It provides compatibility with authentication approaches supported by the 'Snowflake Connector for Python' <https://pypi.org/project/snowflake-connector-python> and the 'Snowflake CLI' <https://pypi.org/project/snowflake-cli>.",
+    "slcr": {
+      "Package": "slcr",
+      "Version": "0.1.0",
+      "Source": "GitHub",
+      "Title": "Interface to Altair SLC from R",
+      "Author": "Michael Mayer [aut, cre]",
+      "Maintainer": "Michael Mayer <michael.mayer@posit.co>",
+      "Authors@R": "person(\"Michael\", \"Mayer\", email = \"michael.mayer@posit.co\", role = c(\"aut\", \"cre\"))",
+      "Description": "Provides an R interface to Altair SLC, enabling users to execute SLC  code and transfer data between R and SLC environments. This package offers  functionality similar to the 'sasquatch' package but uses Altair SLC instead  of SAS.",
       "License": "MIT + file LICENSE",
       "Encoding": "UTF-8",
+      "Roxygen": "list(markdown = TRUE)",
+      "RoxygenNote": "7.3.3",
+      "SystemRequirements": "Altair SLC (>= 2026)",
       "Imports": [
-        "cli",
-        "curl",
-        "jsonlite",
-        "RcppTOML",
-        "rlang",
-        "jose",
-        "openssl"
+        "reticulate",
+        "knitr",
+        "rappdirs"
       ],
       "Suggests": [
         "testthat (>= 3.0.0)",
-        "withr"
+        "withr",
+        "rmarkdown",
+        "htmltools"
       ],
-      "RoxygenNote": "7.3.2",
+      "VignetteBuilder": "knitr",
       "Config/testthat/edition": "3",
-      "URL": "https://posit-dev.github.io/snowflakeauth/, https://github.com/posit-dev/snowflakeauth",
-      "BugReports": "https://github.com/posit-dev/snowflakeauth/issues",
-      "NeedsCompilation": "no",
-      "Author": "Aaron Jacobs [aut], E. David Aja [aut, cre], Posit Software, PBC [cph, fnd]",
-      "Maintainer": "E. David Aja <david@posit.co>",
-      "Repository": "RSPM"
+      "Config/quarto/extension": "slcr",
+      "URL": "https://github.com/sol-eng/slcr, https://sol-eng.github.io/slcr/",
+      "BugReports": "https://github.com/sol-eng/slcr/issues",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "sol-eng",
+      "RemoteRepo": "slcr",
+      "RemoteRef": "main",
+      "RemoteSha": "49f96461fe7937e1a7661fe334e5919339ddfa2c"
     },
     "stringi": {
       "Package": "stringi",
