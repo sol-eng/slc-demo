@@ -42,7 +42,7 @@ Contains Shiny web application:
 To run the examples in this repository, make sure you have the appropriate software installed:
 - R and relevant packages (for R and Shiny examples)
 - Quarto (for Quarto documents)
-- SAS (for SAS examples)
+- Altair SLC (for SAS examples)
 
 ## Dependencies
 
