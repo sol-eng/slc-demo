@@ -1,11 +1,11 @@
-library(slcr)
+library(slcR)
 library(tidyverse)
 
 # Set random seed for reproducibility
 set.seed(12345)
 
 # Generate manageable synthetic dataset for mixed effects modeling
-large_study_data_r <- expand_grid(
+large_study_data <- expand_grid(
   study_id = 1:5,
   site_id = 1:2,
   subject_id = 1:20,
@@ -69,7 +69,7 @@ large_study_data_r <- expand_grid(
   )
 
 # Check the dataset size (equivalent to PROC SQL)
-large_study_data_r |>
+large_study_data |>
   summarise(
     total_observations = n(),
     num_studies = n_distinct(study_id),
@@ -78,16 +78,15 @@ large_study_data_r |>
   )
 
 # Create a SLC session
-conn <- slc_init()
+conn <- Slc$new()
 
 # Copy R dataframe into SLC session context
-write_slc_data(large_study_data_r, "large_study_data_sas", conn)
-
+conn$get_library("WORK")$create_dataset_from_dataframe(large_study_data)
 
 # Our SAS code lives in an R string
 my_code <- "
 /* Simple PROC MIXED analysis with residuals output */
-proc mixed data=large_study_data_sas method=reml;
+proc mixed data=large_study_data method=reml;
     class unique_subject_id study_id treatment_group visit;
     model outcome = visit treatment_group visit*treatment_group / 
           solution outp=mixed_results;  /* This outputs residuals */
@@ -100,10 +99,10 @@ run;
 "
 
 # Submit code to SLC
-result <- slc_submit(my_code, conn)
+result <- conn$submit(my_code)
 
 # Get listing output and convert to list in Python
-listing_output <- get_slc_log(conn, type = "lst")
+listing_output <- conn$get_listing_output()
 
 # Process output in R
 cat("SLC Output:\n")
@@ -113,16 +112,23 @@ for (line in listing_output) {
 }
 
 # Get the fixed effects results as R dataframe
-fixed_effects_df <- read_slc_data("fixed_effects", conn)
+fixed_effects_df <- conn$get_library("WORK")$get_dataset_as_dataframe(
+  "fixed_effects"
+)
 
 # Get the mixed results as R dataframe
-mixed_results_df <- read_slc_data("mixed_results", conn)
+mixed_results_df <- conn$get_library("WORK")$get_dataset_as_dataframe(
+  "mixed_results"
+)
 
 # Get the variance components results as R dataframe
-variance_components_df <- read_slc_data("variance_components", conn)
+variance_components_df <- conn$get_library("WORK")$get_dataset_as_dataframe(
+  "variance_components"
+)
+
 
 # Summary statistics by treatment and visit
-large_study_data_r |>
+large_study_data |>
   group_by(treatment_group, visit) |>
   summarise(
     n = n(),
