@@ -1,7 +1,7 @@
 library(shiny)
 library(tidyverse)
 library(ggplot2)
-library(slcr)
+library(slcR)
 
 # UI
 ui <- fluidPage(
@@ -55,7 +55,7 @@ server <- function(input, output, session) {
     req(input$run_analysis)
 
     withProgress(message = "Initializing SLC...", value = 0.1, {
-      slc_client <- slc_init()
+      slc_client <- Slc$new()
 
       list(client = slc_client)
     })
@@ -128,7 +128,7 @@ server <- function(input, output, session) {
       incProgress(0.4, detail = "Uploading data to SLC...")
 
       # Upload data to SLC
-      write_slc_data(study_data, "study_data", slc_env)
+      slc_env$get_library("WORK")$create_dataset_from_dataframe(study_data)
 
       incProgress(0.6, detail = "Running mixed effects model...")
 
@@ -146,17 +146,20 @@ server <- function(input, output, session) {
       run;
       "
 
-      result <- slc_submit(sas_code, slc_env)
+      result <- slc_env$submit(sas_code)
 
       incProgress(0.8, detail = "Retrieving results...")
 
       # Get results
-      values$fixed_effects <- read_slc_data("fixed_effects", slc_env)
-      values$mixed_results <- read_slc_data("mixed_results", slc_env)
-      values$variance_components <- read_slc_data(
-        "variance_components",
-        slc_env
-      )
+      values$fixed_effects <- slc_env$get_library(
+        "WORK"
+      )$get_dataset_as_dataframe("fixed_effects")
+      values$mixed_results <- slc_env$get_library(
+        "WORK"
+      )$get_dataset_as_dataframe("mixed_results")
+      values$variance_components <- slc_env$get_library(
+        "WORK"
+      )$get_dataset_as_dataframe("variance_components")
 
       incProgress(1.0, detail = "Complete!")
     })
