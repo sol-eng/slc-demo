@@ -3533,7 +3533,7 @@
     },
     "slcR": {
       "Package": "slcR",
-      "Version": "0.1.0",
+      "Version": "0.2.0",
       "Source": "GitHub",
       "Title": "R Interface to Altair SLC",
       "Author": "Michael Mayer [aut, cre]",
@@ -3553,18 +3553,22 @@
         "knitr"
       ],
       "Suggests": [
-        "testthat (>= 3.0.0)"
+        "testthat (>= 3.0.0)",
+        "arrow",
+        "rmarkdown",
+        "htmltools"
       ],
       "Config/testthat/edition": "3",
       "Config/quarto/extension": "slcr",
       "URL": "https://github.com/sol-eng/slcR, https://sol-eng.github.io/slcR/",
       "BugReports": "https://github.com/sol-eng/slcR/issues",
+      "VignetteBuilder": "knitr",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "slcr",
       "RemoteUsername": "sol-eng",
-      "RemoteRef": "no-python",
-      "RemoteSha": "0eaa6f0c26d9103fa4284522e0ee838718e011fb",
+      "RemoteRef": "v0.2.0",
+      "RemoteSha": "1bbafe6491fdc4a8a2dc7c07680fb5909eeb6088",
       "NeedsCompilation": "no"
     },
     "sourcetools": {
