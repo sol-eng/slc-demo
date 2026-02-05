@@ -11,15 +11,16 @@ execute:
 resource_files:
 - renv.lock
 filters:
-  - slc
+  - slcr
 ---
 
 ```{r setup}
 #| echo: false
-library(slcr)
+library(slcR)
 if (!has_slc_extension()) {
   install_slc_extension(force = TRUE)
 }
+
 ```
 
 # Introduction
@@ -37,6 +38,7 @@ We are making use of a new R package named `slcr` (cf. [github](https://sol-eng.
 # Data generation
 
 ```{r}
+#| label: create-data
 library(tidyverse)
 
 # Set random seed for reproducibility
@@ -129,6 +131,8 @@ Note that the SLC code chunk header (not visible in the rendered doc) defines bo
 :::
 
 ```{slc input_data="large_study_data",output_data="mixed_results,fixed_effects,variance_components"}
+#| label: run-slc
+
 /* Simple PROC MIXED analysis with residuals output */
 proc mixed data=large_study_data method=reml;
     class unique_subject_id study_id treatment_group visit;
@@ -142,12 +146,12 @@ proc mixed data=large_study_data method=reml;
 run;
 ```
 
-
 # Visualization
 
 Let's start with summary statistics first
 
 ```{r}
+#| label: visualisation
 # Summary statistics by treatment and visit
 large_study_data |>
   group_by(treatment_group, visit) |>
