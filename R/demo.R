@@ -1,4 +1,4 @@
-library(slcr)
+library(slcR)
 library(tidyverse)
 
 # Set random seed for reproducibility

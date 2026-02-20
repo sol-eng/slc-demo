@@ -1,7 +1,7 @@
 library(shiny)
 library(tidyverse)
 library(ggplot2)
-library(slcr)
+library(slcR)
 
 # UI
 ui <- fluidPage(

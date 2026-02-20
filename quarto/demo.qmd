@@ -16,7 +16,7 @@ filters:
 
 ```{r setup}
 #| echo: false
-library(slcr)
+library(slcR)
 if (!has_slc_extension()) {
   install_slc_extension(force = TRUE)
 }
