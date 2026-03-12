@@ -11,12 +11,14 @@
   },
   "environment": {
     "r": {
-      "requires": "~=4.5.0"
+      "requires": "==4.5.2"
     }
   },
   "quarto": {
-    "version": "1.8.25",
-    "engines": ["knitr"]
+    "version": "==1.8.24",
+    "engines": [
+      "knitr"
+    ]
   },
   "packages": {
     "DBI": {
